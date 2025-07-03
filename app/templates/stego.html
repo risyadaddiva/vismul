@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Steganografi</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🕵️ Steganografi - Sembunyikan Pesan dalam Gambar</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <textarea name="message" placeholder="Masukkan pesan rahasia..." rows="4" style="width: 100%; padding: 0.5rem;"></textarea>
+            <input type="submit" value="Sisipkan Pesan">
+        </form>
+        {% if result %}
+            <p>✅ Pesan berhasil disisipkan!</p>
+            <a class="button" href="/download_stego">⬇️ Unduh Gambar Berisi Pesan</a>
+        {% endif %}
+        <a href="/">⬅ Kembali ke Dashboard</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kompresi Video</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎥 Kompresi Video</h1>
+        <form method="POST" enctype="multipart/form-data" onsubmit="return showProgress()">
+            <input type="file" name="video" accept="video/*" required>
+            <select name="format">
+                <option value="mp4">MP4</option>
+                <option value="webm">WebM</option>
+                <option value="mkv">MKV</option>
+            </select>
+            <input type="submit" value="Kompres Video">
+        </form>
+         {% if info %}
+        <div class="result">
+            <p>Ukuran Sebelum: {{ info.original // 1024 }} KB</p>
+            <p>Ukuran Sesudah: {{ info.compressed // 1024 }} KB</p>
+            <a href="/download/{{ info.file }}" class="button">⬇️ Unduh File Terkompresi</a>
+        </div>
+        {% endif %}
+        <div id="progress" style="display:none;margin-top:1rem">⏳ Mengompresi video...</div>
+        <a href="/">⬅ Kembali ke Dashboard</a>
+    </div>
+    <script>
+        function showProgress() {
+            document.getElementById("progress").style.display = "block";
+            return true;
+        }
+    </script>
+</body>
+</html>
